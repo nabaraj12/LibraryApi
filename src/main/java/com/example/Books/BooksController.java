@@ -4,6 +4,7 @@ package com.example.Books;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -50,6 +51,7 @@ public class BooksController {
 
     //Updating Books in the library
     @RequestMapping(value = "/books/{id}",method = RequestMethod.PUT)
+    @Transactional
     public void updateBook(@PathVariable int id,@RequestBody Book newBookRecord)
     {
         Book existingRecord=booksRepository.getReferenceById(id);
